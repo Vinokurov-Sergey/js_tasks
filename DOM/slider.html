@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="slider.css">
+</head>
+<body>
+    <div class="slider_container">
+        <a href="#" class="arrow" id="left">←</a>
+        <div class="slider">
+            <ul class="items" id="items">
+                <li class="item">1</li>
+                <li class="item">2</li>
+                <li class="item">3</li>
+                <li class="item">4</li>
+                <li class="item">5</li>
+                <li class="item">6</li>
+                <li class="item">7</li>
+                <li class="item">8</li>
+            </ul>
+        </div>
+        <a href="#" class="arrow" id="right">→</a>
+    </div>
+    <script>
+        const minRight = 0;
+        const maxRight = 500;
+        const step = 100;
+
+        const leftBtn = document.querySelector("#left");
+        const RightBtn = document.querySelector("#right");
+        const items = document.querySelector("#items");
+
+        let currentRight = 0;
+        items.style.right = currentRight;
+
+        RightBtn.addEventListener('click', e => {
+            e.preventDefault();
+            if (currentRight < maxRight) {
+                currentRight += step;
+                items.style.right = `${currentRight}px`;
+            }
+        })
+
+        leftBtn.addEventListener('click', e => {
+            e.preventDefault();
+            if (currentRight > minRight) {
+                currentRight -= step;
+                items.style.right = `${currentRight}px`;
+            }
+        })
+    </script>
+</body>
+</html>
